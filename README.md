@@ -1,2 +1,2 @@
 # data-structures-in-c
-Some data structures created from scratch in the C language
+Some data structures implemented in the C language
