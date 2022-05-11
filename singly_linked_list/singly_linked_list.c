@@ -1,16 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "singly_linked_list.h"
 
-// each node contains a value and a pointer to the next node
-struct Node {
-	int value;
-	struct Node* next;
-};
-
-// print the list - takes O(n) time
-void print_list(struct Node* head) {
-	struct Node *temporary = head;
-	
+void print_list(Node* head) {
+	Node *temporary = head;
 	while (temporary != NULL) {
 		printf("%i -> ", temporary->value);
 		temporary = temporary->next;
@@ -19,21 +12,17 @@ void print_list(struct Node* head) {
 	return;
 }
 
-// create a new node - takes O(1) time
-struct Node *create_node(int value) {
-	struct Node *result = malloc(sizeof(struct Node));
+Node *create_node(int value) {
+	Node *result = malloc(sizeof(Node));
 	result->value = value;
 	result->next = NULL;
-
 	return result;
 }
 
-// delete the node specified by value - takes O(n) time
-void delete_node(struct Node **head, struct Node *node_to_delete) {
-	struct Node *temporary = *head;
-	
-	// if the first node is being deleted, update where the head points to
+void delete_node(Node **head, Node *node_to_delete) {
+	Node *temporary = *head;
 	if (node_to_delete == temporary) {
+		// update where head points if deleting first node
 		*head = node_to_delete->next;
 		free(temporary);
 		return;
@@ -51,49 +40,39 @@ void delete_node(struct Node **head, struct Node *node_to_delete) {
 	return;
 }
 
-// insert a new node at the head - takes O(1) time
-struct Node *insert_at_head(struct Node **head, struct Node *node_to_insert) {
+Node *insert_at_head(Node **head, Node *node_to_insert) {
 	node_to_insert->next = *head;
 	*head = node_to_insert;
-
 	return node_to_insert;
 }
 
-// insert a new node after node specified by pointer - takes O(1) time
-struct Node *insert_after_node(struct Node *node_to_insert_after, struct Node *new_node) {
+Node *insert_after_node(Node *node_to_insert_after, Node *new_node) {
 	new_node->next = node_to_insert_after->next;
 	node_to_insert_after->next = new_node;
-
 	return new_node;	
 }
 
-// find a node by value - takes O(n) time
-struct Node *get_node_with_value(struct Node* head, int value) {
-	struct Node *temporary = head;
-
+Node *get_node_by_value(Node* head, int value) {
+	Node *temporary = head;
 	while (temporary != NULL) {
 		if (temporary->value == value) return temporary;
 		temporary = temporary->next;
 	}
-
 	return NULL;
 }
 
-// find the node at specified position - takes O(n) time
-struct Node *get_node_at_position(struct Node* head, int position) {
-	struct Node *temporary = head;
-
+Node *get_node_by_position(Node* head, int position) {
+	Node *temporary = head;
 	for (int i = 0; i <= position && temporary != NULL; i++) {
 		if (i == position) return temporary;
 		temporary = temporary->next;
 	}
-
 	return NULL;
 }
 
 int main() {
-	struct Node *head = NULL;
-	struct Node *tmp;
+	Node *head = NULL;
+	Node *tmp;
 
 	printf("\nCreate initial list:\n");
 	for (int i = 0; i < 25; i++) {
@@ -104,7 +83,7 @@ int main() {
 
 	int value = 10;
 	printf("\nFind node with value = %i:\n", value);
-	tmp = get_node_with_value(head, value);
+	tmp = get_node_by_value(head, value);
 	if (tmp == NULL) {
 		printf("Not found\n");
 	}
@@ -114,7 +93,7 @@ int main() {
 	
 	value = 100;
 	printf("\nFind node with value = %i:\n", value);
-	tmp = get_node_with_value(head, value);
+	tmp = get_node_by_value(head, value);
 	if (tmp == NULL) {
 		printf("Not found\n");
 	}
@@ -124,7 +103,7 @@ int main() {
 
 	int position = 10;
 	printf("\nFind node at position %i:\n", position);
-	tmp = get_node_at_position(head, position);
+	tmp = get_node_by_position(head, position);
 	if (tmp == NULL) {
 		printf("Not found\n");
 	}
@@ -134,7 +113,7 @@ int main() {
 
 	position = 100;
 	printf("\nFind node at position %i:\n", position);
-	tmp = get_node_at_position(head, position);
+	tmp = get_node_by_position(head, position);
 	if (tmp == NULL) {
 		printf("Not found\n");
 	}
@@ -150,12 +129,12 @@ int main() {
 	value = 90;
 	int after = 11;
 	printf("\nInsert a new node with value %i after the %ith node:\n", value, after);
-	tmp = insert_after_node(get_node_at_position(head, after), create_node(value));
+	tmp = insert_after_node(get_node_by_position(head, after), create_node(value));
 	print_list(head);
 
 	value = 5;
 	printf("\nDelete node with the value %i:\n", value);
-	tmp = get_node_with_value(head, value);
+	tmp = get_node_by_value(head, value);
 	delete_node(&head, tmp);
 	print_list(head);
 
