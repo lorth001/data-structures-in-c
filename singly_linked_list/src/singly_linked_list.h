@@ -17,6 +17,9 @@ Node *create_node(int value);
 // Delete Node by value (must provide ref to the head)
 void delete_node(Node **head, Node *node_to_delete);
 
+// Delete entire list
+Node *delete_list(Node *head);
+
 // Insert Node at the list head (must provide ref to the head)
 Node *insert_at_head(Node **head, Node *node_to_insert);
 

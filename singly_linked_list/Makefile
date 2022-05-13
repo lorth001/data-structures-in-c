@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall
+CFLAGS=-Wall -Werror 
 SRC=src
 OBJ=obj
 SRCS=$(wildcard $(SRC)/*.c)
@@ -13,6 +13,10 @@ all:$(BIN)
 release: CFLAGS=-Wall -O2 -DNDEBUG
 release: clean
 release: $(BIN)
+
+valgrind: CFLAGS=-Wall -Werror -g
+valgrind: clean
+valgrind: $(BIN)
 
 $(OBJS): | $(OBJ)
 $(OBJ):
@@ -30,3 +34,6 @@ $(OBJ)/%.o: $(SRC)/%.c
 
 clean:
 	$(RM) -r $(BINDIR)/* $(OBJ)/*
+
+valgrind:
+	-valgrind -s --leak-check=full --keep-debuginfo=yes --track-origins=yes $(BIN)

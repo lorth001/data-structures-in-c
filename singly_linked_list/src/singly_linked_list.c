@@ -5,11 +5,13 @@
 
 void print_list(Node* head) {
 	Node *temporary = head;
+	if (temporary == NULL) printf("The list is empty\n");
+	printf("\n head\n  |\n  ");
 	while (temporary != NULL) {
-		printf("%i -> ", temporary->value);
+		printf("%i --> ", temporary->value);
 		temporary = temporary->next;
 	}
-	printf("\n");
+	printf("NULL\n");
 	return;
 }
 
@@ -39,6 +41,17 @@ void delete_node(Node **head, Node *node_to_delete) {
 		}
 	}
 	return;
+}
+
+Node *delete_list(Node *head) {
+	Node *temporary = head;
+	Node *next_node = NULL;
+	while (temporary != NULL) {
+		next_node = temporary->next;
+		free(temporary);
+		temporary = next_node;
+	}
+	return temporary;
 }
 
 Node *insert_at_head(Node **head, Node *node_to_insert) {

@@ -1,6 +1,6 @@
 import random
 
-file = open("src/random_list.txt", "w")
+file = open("random_list.txt", "w")
 
 try:
     for i in range(int(input('How many random numbers?: '))):
