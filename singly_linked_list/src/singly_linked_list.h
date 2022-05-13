@@ -20,6 +20,9 @@ void delete_node(Node **head, Node *node_to_delete);
 // Insert Node at the list head (must provide ref to the head)
 Node *insert_at_head(Node **head, Node *node_to_insert);
 
+// Insert Node at the list tail
+void insert_at_tail(Node *head, Node *new_node);
+
 // Insert Node after another Node
 Node *insert_after_node(Node *node_to_insert_after, Node *new_node);
 

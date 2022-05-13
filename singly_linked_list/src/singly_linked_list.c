@@ -47,6 +47,14 @@ Node *insert_at_head(Node **head, Node *node_to_insert) {
 	return node_to_insert;
 }
 
+void insert_at_tail(Node *head, Node *new_node) {
+	Node *temporary = head;
+	while (temporary->next != NULL) {
+		temporary = temporary->next;
+	}
+	temporary->next = new_node;
+}
+
 Node *insert_after_node(Node *node_to_insert_after, Node *new_node) {
 	new_node->next = node_to_insert_after->next;
 	node_to_insert_after->next = new_node;

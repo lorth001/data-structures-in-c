@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "singly_linked_list.h"
 
-
+/*
 int main() {
-	Node *head = NULL;
 	Node *tmp;
 
 	printf("\nCreate initial list:\n");
@@ -71,5 +71,9 @@ int main() {
 	delete_node(&head, tmp);
 	print_list(head);
 
+	Node *head = NULL;
+	init_list_from_file(head, "src/test_list.txt");
+
 	return 0;
 }
+	*/
