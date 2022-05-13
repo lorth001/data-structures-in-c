@@ -59,6 +59,7 @@ void prompt(Node *head, int option) {
 			case 1:
 				printf("You selected option 1\n");
 				break;
+
 			case 2:
 				printf("Filename: ");
 				char *filename = user_input();
@@ -66,14 +67,15 @@ void prompt(Node *head, int option) {
 				free(filename);
 				filename = NULL;
 				prompt(head, 0);
+
 			default:
 				printf("\nInvalid entry - please try again\n");
 				prompt(NULL, 0);
 		}
 	}
 	else {
-		printf("\n");
-		printf("\n1) Print the list\n");
+		printf("\n----------------------------------------\n");
+		printf("1) Print the list\n");
 		printf("2) Insert at the beginning\n");
 		printf("3) Insert at the end\n");
 		printf("4) Insert after element\n");
@@ -83,16 +85,20 @@ void prompt(Node *head, int option) {
 
 		switch (get_num_from_usr()) {
 			case 1:
-				printf("LINKED-LIST:\n");
+				printf("\nLINKED-LIST:\n");
 				print_list(head);
+				prompt(head, 0);
+
 			case 2:
 				printf("Value: ");
 				head = insert_at_head(&head, create_node(get_num_from_usr()));
 				prompt(head, 0);
+
 			case 3:
 				printf("Value: ");
 				insert_at_tail(head, create_node(get_num_from_usr()));
 				prompt(head, 0);
+
 			case 4:
 				printf("Element to insert after: ");
 				element = get_node_by_value(head, get_num_from_usr());
@@ -101,9 +107,9 @@ void prompt(Node *head, int option) {
 					prompt(head, 0);
 				}
 				printf("Value: ");
-				int value = get_num_from_usr();
-				insert_after_node(element, create_node(value));
+				insert_after_node(element, create_node(get_num_from_usr()));
 				prompt(head, 0);
+
 			case 5:
 				printf("Element to delete: ");
 				element = get_node_by_value(head, get_num_from_usr());
@@ -114,6 +120,7 @@ void prompt(Node *head, int option) {
 				delete_node(&head, element);
 				printf("Element deleted\n");
 				prompt(head, 0);
+
 			case 6:
 				printf("Element to find: ");
 				element = get_node_by_value(head, get_num_from_usr());
@@ -123,6 +130,7 @@ void prompt(Node *head, int option) {
 				}
 				printf("Element found!\n");
 				prompt(head, 0);
+
 			default:
 				printf("\nInvalid entry - please try again\n");
 				prompt(head, 0);

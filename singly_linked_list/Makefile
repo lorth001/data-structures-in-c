@@ -14,6 +14,14 @@ release: CFLAGS=-Wall -O2 -DNDEBUG
 release: clean
 release: $(BIN)
 
+$(OBJS): | $(OBJ)
+$(OBJ):
+	-mkdir $(OBJ) 2>/dev/null
+
+$(BIN): | $(BINDIR)
+$(BINDIR):
+	-mkdir $(BINDIR) 2>/dev/null
+
 $(BIN): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
