@@ -1,6 +1,6 @@
 # Singly Linked List
 
-A little program that builds singly linked lists and performs the following operations on them:
+A program that builds singly linked lists and performs the following operations on them:
 
 | Operation| Time Complexity |
 |--|--|
