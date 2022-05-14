@@ -40,4 +40,4 @@ To run the program (assuming it's built and you're in the **singly_linked_list**
 
 A menu should display, prompting you to either initialize a new list from the command line or from a file.  Enter the number for the option you want.
 
-If you wish to initialize from a file, please see the **example_list.txt** file for an example of the expected format.  Keep in mind that when the program prompts you for a filename, it is expecting a relative filepath from the directory you are currently in.
+If you wish to initialize from a file, please see the **example_list.txt** file for an example of the expected format.  Keep in mind that when the program prompts you for a filename, it is expecting a relative filepath from the directory you started from.
