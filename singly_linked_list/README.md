@@ -30,7 +30,7 @@ Now issue the **make** command:
 
 Done!  The executable is named *main* and it is located in the **bin** directory.
 
->**Note**:  You can also issue the command **make valgrind** to build the program and immediately have it run with Valgrind.  This will display additional memory stats upon exiting the program.
+>**Note**:  You can also issue the command **make valgrind** to build the program and immediately have it run with Valgrind.  This will display additional memory usage upon exiting the program.
 
 ## How to Use
 
