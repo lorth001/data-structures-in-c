@@ -46,7 +46,7 @@ Node *init_list_from_file(Node *head, char *filename) {
 
 	while (fgets(line, LINE_SIZE, fin) != NULL) {
 		Node *value = create_node(atoi(line));
-		insert_at_head(&head, value);
+		insert_at_beginning(&head, value);
 	}
 
 	fclose(fin);
@@ -59,7 +59,7 @@ Node *init_random_list(Node *head, int min, int max, int size) {
 
 	for (int i = 0; i < size; i++) {
 		int random_value = min + rand() / (RAND_MAX / (max - min + 1) + 1);
-		head = insert_at_head(&head, create_node(random_value));
+		head = insert_at_beginning(&head, create_node(random_value));
 	}
 
 	return head;
@@ -123,12 +123,12 @@ void prompt(Node *head) {
 
 			case 2:
 				printf("Value: ");
-				head = insert_at_head(&head, create_node(get_int_from_user()));
+				head = insert_at_beginning(&head, create_node(get_int_from_user()));
 				prompt(head);
 
 			case 3:
 				printf("Value: ");
-				insert_at_tail(head, create_node(get_int_from_user()));
+				insert_at_end(head, create_node(get_int_from_user()));
 				prompt(head);
 
 			case 4:

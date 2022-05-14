@@ -4,12 +4,12 @@
 
 
 void print_list(Node* head) {
-	Node *temporary = head;
-	if (temporary == NULL) printf("The list is empty\n");
+	Node *temp = head;
+	if (temp == NULL) printf("The list is empty\n");
 	printf("\n head\n  |\n  ");
-	while (temporary != NULL) {
-		printf("%i --> ", temporary->value);
-		temporary = temporary->next;
+	while (temp != NULL) {
+		printf("%i --> ", temp->value);
+		temp = temp->next;
 	}
 	printf("NULL\n");
 	return;
@@ -23,49 +23,49 @@ Node *create_node(int value) {
 }
 
 void delete_node(Node **head, Node *node_to_delete) {
-	Node *temporary = *head;
-	if (node_to_delete == temporary) {
+	Node *temp = *head;
+	if (node_to_delete == temp) {
 		// update where head points if deleting first node
 		*head = node_to_delete->next;
-		free(temporary);
+		free(temp);
 		return;
 	}
 	else {
-		while (temporary != NULL) {
-			if (temporary->next == node_to_delete) {
-				temporary->next = node_to_delete->next;
+		while (temp != NULL) {
+			if (temp->next == node_to_delete) {
+				temp->next = node_to_delete->next;
 				free(node_to_delete);
 				return;
 			}
-			temporary = temporary->next;
+			temp = temp->next;
 		}
 	}
 	return;
 }
 
 Node *delete_list(Node *head) {
-	Node *temporary = head;
+	Node *temp = head;
 	Node *next_node = NULL;
-	while (temporary != NULL) {
-		next_node = temporary->next;
-		free(temporary);
-		temporary = next_node;
+	while (temp != NULL) {
+		next_node = temp->next;
+		free(temp);
+		temp = next_node;
 	}
-	return temporary;
+	return temp;
 }
 
-Node *insert_at_head(Node **head, Node *node_to_insert) {
+Node *insert_at_beginning(Node **head, Node *node_to_insert) {
 	node_to_insert->next = *head;
 	*head = node_to_insert;
 	return node_to_insert;
 }
 
-void insert_at_tail(Node *head, Node *new_node) {
-	Node *temporary = head;
-	while (temporary->next != NULL) {
-		temporary = temporary->next;
+void insert_at_end(Node *head, Node *new_node) {
+	Node *temp = head;
+	while (temp->next != NULL) {
+		temp = temp->next;
 	}
-	temporary->next = new_node;
+	temp->next = new_node;
 }
 
 Node *insert_after_node(Node *node_to_insert_after, Node *new_node) {
@@ -75,19 +75,10 @@ Node *insert_after_node(Node *node_to_insert_after, Node *new_node) {
 }
 
 Node *get_node_by_value(Node* head, int value) {
-	Node *temporary = head;
-	while (temporary != NULL) {
-		if (temporary->value == value) return temporary;
-		temporary = temporary->next;
-	}
-	return NULL;
-}
-
-Node *get_node_by_position(Node* head, int position) {
-	Node *temporary = head;
-	for (int i = 0; i <= position && temporary != NULL; i++) {
-		if (i == position) return temporary;
-		temporary = temporary->next;
+	Node *temp = head;
+	while (temp != NULL) {
+		if (temp->value == value) return temp;
+		temp = temp->next;
 	}
 	return NULL;
 }
