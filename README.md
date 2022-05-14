@@ -1,6 +1,6 @@
 # Data Structures in C
 
-A collection of programs I built to practice my conceptual knowledge of data structures (DS).  Each program focuses on a particular well-known DS and implements it from scratch in the C language.
+A collection of programs I built to practice my conceptual knowledge of data structures (DS).  Each program focuses on a particular, well-known DS and implements it from scratch in the C language.
 
 ## Why C?
 
