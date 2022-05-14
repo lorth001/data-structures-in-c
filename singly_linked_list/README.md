@@ -24,7 +24,7 @@ Then **cd** into the **data-structures-in-c/singly_linked_list** directory:
 
     cd data-structures-in-c/singly_linked_list
 
-Now run the **make** command:
+Now issue the **make** command:
 
     make
 
