@@ -1,6 +1,7 @@
 # Singly Linked Lists
 
-A little program that allows you to build singly linked lists with integer values and perform the following operations on them:
+A little program that builds singly linked lists and performs the following operations on them:
+
 | Operation| Time Complexity |
 |--|--|
 | Insert at the beginning | O(1) |
