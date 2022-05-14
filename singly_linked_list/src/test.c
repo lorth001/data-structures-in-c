@@ -112,7 +112,7 @@ void prompt(Node *head) {
 		printf("5) Delete\n");
 		printf("6) Search\n");
 		printf("7) Delete the list\n");
-		printf("8) Exit to main menu\n");
+		printf("8) Exit\n");
 		printf("> ");
 
 		switch (get_int_from_user()) {
@@ -170,7 +170,8 @@ void prompt(Node *head) {
 
 			case 8:
 				head = delete_list(head);
-				prompt(head);
+				printf("Goodbye!\n");
+				exit(0);
 
 			default:
 				printf("\nInvalid entry - please try again\n");
