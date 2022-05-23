@@ -1,6 +1,6 @@
-# Singly Linked List
+# Doubly Linked List
 
-A program that builds singly linked lists and performs the following operations on them:
+A program that builds doubly linked lists and performs the following operations on them:
 
 | Operation| Time Complexity |
 |--|--|
@@ -11,7 +11,7 @@ A program that builds singly linked lists and performs the following operations 
 | Delete | O(1) on its own, but O(n) with the required search |
 | Delete the list | O(n) |
 
-> **Note**:  This linked list implementation only allows for *integer* values to be stored in the list.
+> **Note**:  My implementation only allows for *integer* values to be stored in the list.
 
 
 ## How to Build
@@ -20,9 +20,9 @@ If you haven't cloned the **data-structures-in-c** repo yet, do that first:
 
     git clone https://github.com/lorth001/data-structures-in-c.git
 
-Then **cd** into the **data-structures-in-c/singly_linked_list** directory:
+Then **cd** into the **data-structures-in-c/doubly_linked_list** directory:
 
-    cd data-structures-in-c/singly_linked_list
+    cd data-structures-in-c/doubly_linked_list
 
 Now issue the **make** command:
 
