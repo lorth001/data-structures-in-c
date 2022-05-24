@@ -8,10 +8,10 @@ A program that builds singly linked lists and performs the following operations 
 | Insert at the end | O(n) |
 | Insert after an element | O(1) on its own, but O(n) with the required search |
 | Search | O(n) |
-| Delete | O(1) on its own, but O(n) with the required search |
+| Delete | O(n) |
 | Delete the list | O(n) |
 
-> **Note**:  This linked list implementation only allows for *integer* values to be stored in the list.
+> **Note**:  My implementation only allows for *integer* values to be stored in the list.
 
 
 ## How to Build
