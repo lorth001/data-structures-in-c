@@ -15,17 +15,20 @@ Node *create_node(int value);
 // Insert a value into the tree 
 Node *insert_value(Node **root, int value);
 
+// Determine if the tree contains the given value
+Node *find_value(Node *root, int value);
+
+// Delete the Node with the given value
+Node *delete_value(Node *root, int value);
+
+// Delete the tree
+Node *delete_tree(Node *root);
+
 // Utility function for printing the tree
 void print_util(struct Node *root, int space);
 
 // Print the tree
 void print_tree(struct Node *root);
-
-// Determine if the tree contains the given value
-Node *find_value(Node *root, int value);
-
-// Delete the Node with the given value
-Node *delete_value(Node **root, int value);
 
 
 #endif

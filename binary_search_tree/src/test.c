@@ -45,8 +45,12 @@ Node *init_bst_from_file(Node *root, char *filename) {
 	const int LINE_SIZE=12;
 	char line[LINE_SIZE];
 	
+	printf("\nThe following values were inserted in this order:\n");
 	while (fgets(line, LINE_SIZE, fin) != NULL) {
-		insert_value(&root, atoi(line));
+		Node *new_node = insert_value(&root, atoi(line));
+		if (new_node != NULL) {
+			printf("%d, ", atoi(line));
+		}
 	}
 	
 
@@ -57,9 +61,13 @@ Node *init_bst_from_file(Node *root, char *filename) {
 Node *init_random_bst(Node *root, int min, int max, int size) {
 	srand(time(NULL));
 
+	printf("\nThe following values were inserted in this order:\n");
 	for (int i = 0; i < size; i++) {
 		int random_value = min + rand() / (RAND_MAX / (max - min + 1) + 1);
-		insert_value(&root, random_value);
+		Node *new_node = insert_value(&root, random_value);
+		if (new_node != NULL) {
+			printf("%d, ", random_value);
+		}
 	}
 
 	return root;
@@ -129,7 +137,7 @@ void prompt(Node *root) {
 
 			case 3:
 				printf("Value to delete: ");
-				element = delete_value(&root, get_int_from_user());
+				root = delete_value(root, get_int_from_user());
 				prompt(root);
 
 			case 4:
@@ -143,13 +151,13 @@ void prompt(Node *root) {
 				prompt(root);
 
 			case 5:
-				//root = delete_list(root);
-				//printf("List deleted!\n");
+				root = delete_tree(root);
+				printf("Tree deleted!\n");
 				prompt(root);
 
 			case 6:
-				//root = delete_list(root);
-				//printf("Goodbye!\n");
+				root = delete_tree(root);
+				printf("Goodbye!\n");
 				exit(0);
 
 			default:
