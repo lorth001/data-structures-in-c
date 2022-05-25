@@ -33,7 +33,7 @@ int get_int_from_user() {
 	return num;
 }
 
-bool init_bst_from_file(Node *root, char *filename) {
+Node *init_bst_from_file(Node *root, char *filename) {
 	FILE * fin = fopen(filename, "r");
 
 	if (fin == NULL) {
@@ -44,26 +44,25 @@ bool init_bst_from_file(Node *root, char *filename) {
 
 	const int LINE_SIZE=12;
 	char line[LINE_SIZE];
-
-	bool success = true;
+	
 	while (fgets(line, LINE_SIZE, fin) != NULL) {
-		success &= insert_value(&root, atoi(line));
+		insert_value(&root, atoi(line));
 	}
+	
 
 	fclose(fin);
-	return success;
+	return root;
 }
 
-bool init_random_bst(Node *root, int min, int max, int size) {
+Node *init_random_bst(Node *root, int min, int max, int size) {
 	srand(time(NULL));
 
-	bool success = true;
 	for (int i = 0; i < size; i++) {
 		int random_value = min + rand() / (RAND_MAX / (max - min + 1) + 1);
-		success &= insert_value(&root, random_value);
+		insert_value(&root, random_value);
 	}
 
-	return success;
+	return root;
 }
 
 void prompt(Node *root) {
@@ -82,14 +81,14 @@ void prompt(Node *root) {
 				printf("Minimum value: ");
 				int min = get_int_from_user();
 				printf("Maximum value: ");
-				init_random_bst(root, min, get_int_from_user(), size);
+				root = init_random_bst(root, min, get_int_from_user(), size);
 				prompt(root);
 				break;
 
 			case 2:
 				printf("Filename: ");
 				char *filename = user_input();
-				init_bst_from_file(root, filename);
+				root = init_bst_from_file(root, filename);
 				free(filename);
 				filename = NULL;
 				prompt(root);
@@ -104,75 +103,53 @@ void prompt(Node *root) {
 		}
 	}
 	else {
-		/* LEFT OFF HERE */
 		Node *element = NULL;
 		printf("\n----------------------------------------\n");
 		printf("1) Print the BST\n");
-		printf("2) Insert at the beginning\n");
-		printf("3) Insert at the end\n");
-		printf("4) Insert after element\n");
-		printf("5) Delete\n");
-		printf("6) Search\n");
-		printf("7) Delete the list\n");
-		printf("8) Exit\n");
+		printf("2) Insert new value\n");
+		printf("3) Delete value\n");
+		printf("4) Search\n");
+		printf("5) Delete the BST\n");
+		printf("6) Exit\n");
 		printf("> ");
 
 		switch (get_int_from_user()) {
 			case 1:
-				printf("\nLINKED-LIST:\n");
-				print_list(root);
+				printf("\nBINARY SEARCH TREE (BST):\n");
+				print_tree(root);
 				prompt(root);
 
 			case 2:
 				printf("Value: ");
-				root = insert_at_beginning(&root, create_node(get_int_from_user()));
+				element = insert_value(&root, get_int_from_user());
+				if (element == NULL) {
+					printf("Value already exists\n");
+				}
 				prompt(root);
 
 			case 3:
-				printf("Value: ");
-				insert_at_end(root, create_node(get_int_from_user()));
+				printf("Value to delete: ");
+				element = delete_value(&root, get_int_from_user());
 				prompt(root);
 
 			case 4:
-				printf("Element to insert after: ");
-				element = get_node_by_value(root, get_int_from_user());
+				printf("Value to find: ");
+				element = find_value(root, get_int_from_user());
 				if (element == NULL) {
-					printf("Element not found\n");
+					printf("Value not found\n");
 					prompt(root);
 				}
-				printf("Value: ");
-				insert_after_node(element, create_node(get_int_from_user()));
+				printf("Value found!\n");
 				prompt(root);
 
 			case 5:
-				printf("Element to delete: ");
-				element = get_node_by_value(root, get_int_from_user());
-				if (element == NULL) {
-					printf("Element not found\n");
-					prompt(root);
-				}
-				delete_node(&root, element);
-				printf("Element deleted\n");
+				//root = delete_list(root);
+				//printf("List deleted!\n");
 				prompt(root);
 
 			case 6:
-				printf("Element to find: ");
-				element = get_node_by_value(root, get_int_from_user());
-				if (element == NULL) {
-					printf("Element not found\n");
-					prompt(root);
-				}
-				printf("Element found!\n");
-				prompt(root);
-
-			case 7:
-				root = delete_list(root);
-				printf("List deleted!\n");
-				prompt(root);
-
-			case 8:
-				root = delete_list(root);
-				printf("Goodbye!\n");
+				//root = delete_list(root);
+				//printf("Goodbye!\n");
 				exit(0);
 
 			default:

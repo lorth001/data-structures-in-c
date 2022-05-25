@@ -12,15 +12,15 @@ Node *create_node(int value) {
 	return new_node;
 }
 
-bool insert_value(Node **root, int value) {
+Node *insert_value(Node **root, int value) {
 	if (*root == NULL) {
 		// tree is empty - create new node
 		*root = create_node(value);
-		return true;
+		return *root;
 	}
 	else if (value == (*root)->value) {
 		// tree already contains value - do nothing
-		return false;
+		return NULL;
 	}
 	else if (value < (*root)->value) {
 		// recursive call on left subtree
@@ -32,14 +32,14 @@ bool insert_value(Node **root, int value) {
 	}
 }
 
-bool find_value(Node *root, int value) {
+Node *find_value(Node *root, int value) {
 	if (root == NULL) {
 		// could not find value
-		return false;
+		return NULL;
 	}
 	else if (value == root->value) {
 		// found value
-		return true;
+		return root;
 	}
 	else if (value < root->value) {
 		// recursive call on left subtree
@@ -100,6 +100,9 @@ Node *delete_value(Node **root, int value) {
 }
 
 void print_util(struct Node *root, int space) {
+	// used to adjust spacing of nodes	
+	const int SPACES=10;
+
     if (root == NULL)
         return;
  
@@ -134,7 +137,7 @@ void print_tree(struct Node *root) {
    printf("\n");
 }
 
-
+/*
 int main() {
 	Node *root = NULL;
 
@@ -168,3 +171,4 @@ int main() {
 	printf("%d -> %d\n", 1, find_value(root, 1));
 	return 0;
 }
+*/
