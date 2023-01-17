@@ -7,9 +7,8 @@ A collection of programs I built to practice my conceptual knowledge of data str
 For several reasons.
 
 1. It's not already prepackaged with a lot of data structures
-2. It requires memory management (I accept the challenge)
-3. It's fast (always a plus)
-4. I wanted to get better at C
+2. It requires memory management
+3. I wanted to live dangerously
 
 ## How to Use
 
