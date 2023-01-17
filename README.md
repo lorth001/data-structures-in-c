@@ -12,4 +12,4 @@ For several reasons.
 
 ## How to Use
 
-Each program contains it's own README with information on how to use it.  See you there!
+Each program contains it's own README with information on how to use it.
